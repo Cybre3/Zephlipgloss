@@ -1,2 +1,0 @@
-# Zephlipgloss
-Lipgloss eccomerce website
