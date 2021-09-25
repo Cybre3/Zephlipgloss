@@ -6,6 +6,7 @@ const NavBar = (props) => {
   return (
     <div className="m-3">
       <Navbar navbar expand='md'>
+      {/* navbar icon/picture */}
         <Navbar.Brand href="/">
           <img src={props.image} alt="logo" className="navbar-image" width="220" height="100" />
         </Navbar.Brand>

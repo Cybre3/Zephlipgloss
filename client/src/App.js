@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import FOG from "vanta/dist/vanta.fog.min";
 
+import SaleBanner from './Components/SaleBanner';
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
@@ -42,6 +43,7 @@ const App = (props) => {
   return (
     <Router>
       <div ref={myRef}>
+        <SaleBanner />
         <NavBar image="https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/new%20logo.jpg/:/rs=h:168,cg:true,m/qt=q:100/ll" />
         <div>
           <Switch>
