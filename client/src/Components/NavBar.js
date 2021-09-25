@@ -1,39 +1,95 @@
 import React from "react";
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
-    <div className="p-3 mb-2 bg-gradient-primary text-white">.bg-gradient-primary</div>
-    /* <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Image</a>
-        <div className="collapse navbar-collapse justify-content-end">
-          <ul className="navbar-nav">
+    <div className="m-3">
+      <Navbar navbar expand='md'>
+        <Navbar.Brand href="/">
+          <img src={props.image} alt="logo" className="navbar-image" width="220" height="100" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="ml-auto my-2 my-lg-0 navbar-nav navbar-text"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
+          >
+            <Nav.Link href="/" active>Home</Nav.Link>
+            <Nav.Link href="/shop">Shop</Nav.Link>
+            <Nav.Link href="/sale">SALE</Nav.Link>
+            <Nav.Link href="instagram.com">Instgram</Nav.Link>
+            <NavDropdown title="Explore" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/gallery">Gallery</NavDropdown.Item>
+              <NavDropdown.Item href="/blog">Blog</NavDropdown.Item>
+              <NavDropdown.Item href="/contactus">Contact Us</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      {/* <nav className="navbar navbar-expand-md navbar-light border border-dark">
+        <a className="navbar-brand" href="/">
+          <img src={props.image} alt="logo" className="navbar-image" width="220" height="100" />
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul className="navbar-nav navbar-text">
             <li className="nav-item active">
-              <a className="nav-link" href="/">Home</a>
+              <a className="nav-link" href="/">
+                Home
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/shop">shop</a>
+              <a className="nav-link" href="/shop">
+                shop
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/sale">SALE</a>
+              <a className="nav-link" href="/sale">
+                SALE
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/instagram">Instagram</a>
+              <a className="nav-link" href="/instagram">
+                Instagram
+              </a>
             </li>
-            <li className="nav-item">
-              <a class="nav-link dropdown-toggle" href="/explore">Explore</a>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="/"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+              >
+                Dropdown
+              </a>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a className="dropdown-item" href="/">
+                  Action
+                </a>
+              </div>
             </li>
           </ul>
         </div>
-      </nav>
-    </div> */
+      </nav> */}
+    </div>
   );
 };
 
 export default NavBar;
-
-
 
 // MO version
 // import { Link } from 'react-router-dom';
@@ -49,5 +105,5 @@ export default NavBar;
 //         </nav>
 //     );
 // }
- 
+
 // export default NavBar;
