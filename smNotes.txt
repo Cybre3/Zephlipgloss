@@ -1,0 +1,65 @@
+vanta background design looks for FOG
+
+    VANTA.FOG({
+      // el: "body",
+      // mouseControls: true,
+      // touchControls: true,
+      // gyroControls: false,
+      // minHeight: 200.0,
+      // minWidth: 200.0,
+      // highlightColor: 0xfcb8e1,
+      // midtoneColor: 0xe89ec9,
+      // lowlightColor: 0xff0000,
+
+      // el: "*",
+      // mouseControls: true,
+      // touchControls: true,
+      // gyroControls: false,
+      // minHeight: 200.0,
+      // minWidth: 200.0,
+      // highlightColor: 0xfce3b8,
+      // midtoneColor: 0xf5a4bf,
+      // lowlightColor: 0xff2828,
+      // baseColor: 0xffe9f7,
+
+      // el: "*",
+      // mouseControls: true,
+      // touchControls: true,
+      // gyroControls: false,
+      // minHeight: 200.0,
+      // minWidth: 200.0,
+      // highlightColor: 0xfce3b8,
+      // midtoneColor: 0xf5a4bf,
+      // lowlightColor: 0xff2828,
+      // baseColor: 0xffe9f7,
+      // blurFactor: 0.31,
+      // speed: 1.2,
+      // zoom: 2.3,
+
+      el: "*",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      highlightColor: 0xfce3b8,
+      midtoneColor: 0xf5a4bf,
+      lowlightColor: 0xff2828,
+      baseColor: 0xffffff,
+      blurFactor: 0.31,
+      speed: 1.2,
+      zoom: 2.3,
+    });
+
+ sale badge
+ Badges can be used as part of links or buttons to provide a counter.
+
+<Button variant="primary">
+  Profile <Badge bg="secondary">9</Badge>
+  <span className="visually-hidden">unread messages</span>
+</Button>
+<Button variant="primary">
+  Profile <Badge bg="secondary">9</Badge>
+  <span className="visually-hidden">unread messages</span>
+</Button>
+Note that depending on how they are used, badges may be confusing for users of screen readers and similar assistive technologies. While the styling of badges provides a visual cue as to their purpose, these users will simply be presented with the content of the badge. Depending on the specific situation, these badges may seem like random additional words or numbers at the end of a sentence, link, or button. Unless the context is clear, consider including additional context with a visually hidden piece of additional text.
