@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navbar {
+  /* background-image: linear-gradient(to left, white, pink, white); */
+  background-color: rgba(241, 85, 85, 0.2);
+  border: 1px solid gray;
+  border-radius: 3ex;
+  opacity: 0.7;
+}
+
+.navbar-image {
+  border-color: black;
+  border-style: double;
+  border-radius: 4ex;
+  margin-left: 1ex;
+}
+
+.navbar-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 5ex;
+}
+
+/* Product Details */
+.container {
+  display: flex;
+}
+
+.left-section , .right-section {
+  flex-basis: 100px;
+}
+
+.product-img {
+  height: 600px;
+  width: 400px;
+}
+
+/* .right-section {
+  float: right;
+  display: inline;
+  height: 600px;
+  width: 400px;
+} */
+
+/* Button */
+.btn-custom {
+  background-color: rgb(250, 184, 196);
+}
