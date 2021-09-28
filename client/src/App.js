@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import NavBar from "./Components/NavBar";
 import Home from './Components/Home';
-import Product from "./Components/Product";
+import ProductDetails from "./Components/Product-Details";
 import PrivacyPolicy from './Components/PrivacyPolicy';
 import TermsAndConditions from "./Components/TermsConditions";
 import Footer from './Components/Footer'
@@ -19,7 +19,7 @@ function App() {
               <Home />
             </Route>
             <Route exact path="/product-details">
-              <Product />
+              <ProductDetails />
             </Route>
             <Route exact path="/privacy-policy">
               <PrivacyPolicy />
