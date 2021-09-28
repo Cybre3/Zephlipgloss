@@ -32,3 +32,50 @@ code {
   font-weight: 600;
   margin-right: 5ex;
 }
+<<<<<<< HEAD
+
+/* Product Details */
+/* .container {
+  display: grid;
+}
+
+.left-section , .right-section {
+  flex-basis: 100px;
+} */
+
+.product-img {
+  height: 435px;
+  width: 435px;
+  display: block;
+}
+
+/* .right-section {
+  float: right;
+  display: inline;
+  height: 600px;
+  width: 400px;
+} */
+
+/* Button */
+.pink-button {
+  background-color: rgb(250, 184, 196);
+  color: rgb(4, 4, 4);
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 48px;
+  min-height: 56px;
+  width: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 40px;
+  padding-left: 40px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  border-style: none;
+  justify-content: center;
+  box-sizing: inherit;
+}
+=======
+>>>>>>> a687e8a8244ceba8d794c0600352ffaa5d354f6d
