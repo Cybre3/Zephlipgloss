@@ -1,4 +1,4 @@
-import PinkButton from './Button';
+import PinkButton from './SubComponents/Button';
 
 const ProductDetails = () => {
     let sampleProduct = {
