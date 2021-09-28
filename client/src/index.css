@@ -34,8 +34,8 @@ code {
 }
 
 /* Product Details */
-.container {
-  display: flex;
+/* .container {
+  display: grid;
 }
 
 .left-section , .right-section {
@@ -45,7 +45,7 @@ code {
 .product-img {
   height: 600px;
   width: 400px;
-}
+} */
 
 /* .right-section {
   float: right;
@@ -55,6 +55,23 @@ code {
 } */
 
 /* Button */
-.btn-custom {
+.pink-button {
   background-color: rgb(250, 184, 196);
+  color: rgb(4, 4, 4);
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 48px;
+  min-height: 56px;
+  width: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 40px;
+  padding-left: 40px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  border-style: none;
+  justify-content: center;
+  box-sizing: inherit;
 }
