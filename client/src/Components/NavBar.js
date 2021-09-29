@@ -1,12 +1,13 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+// import { Link } from "react-router-dom";
+import NavIcon from "./SubComponents/NavIcon";
 
 const NavBar = (props) => {
   return (
     <div className="m-3">
-      <Navbar navbar expand='md'>
-      {/* navbar icon/picture */}
+      <Navbar navbar expand="md">
+        {/* navbar icon/picture */}
         <Navbar.Brand href="/">
           <img src={props.image} alt="logo" className="navbar-image" width="220" height="100" />
         </Navbar.Brand>
@@ -17,7 +18,9 @@ const NavBar = (props) => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/" active>Home</Nav.Link>
+            <Nav.Link href="/" active>
+              Home
+            </Nav.Link>
             <Nav.Link href="/shop">Shop</Nav.Link>
             <Nav.Link href="/sale">SALE</Nav.Link>
             <Nav.Link href="instagram.com">Instgram</Nav.Link>
@@ -26,6 +29,10 @@ const NavBar = (props) => {
               <NavDropdown.Item href="/blog">Blog</NavDropdown.Item>
               <NavDropdown.Item href="/contactus">Contact Us</NavDropdown.Item>
             </NavDropdown>
+            <div className="vr ml-3 mr-4"></div>
+            <NavIcon class="bi bi-search" />
+            <NavIcon class="bi bi-cart" linkTo="/cart" />
+            <NavIcon class="bi bi-person-lines-fill" linkTo="/user" />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
