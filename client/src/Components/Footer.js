@@ -37,7 +37,7 @@ const Footer = () => {
               <h6 className="text-uppercase fw-bold mb-4">
                 <i className="fas fa-gem me-3"></i>Zephlipgloss
               </h6>
-              <p>Placeholder</p>
+              <Link to='/about'>About Us</Link>
             </div>
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 class="text-uppercase fw-bold mb-4">Products</h6>
