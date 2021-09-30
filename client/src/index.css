@@ -77,7 +77,25 @@ code {
 }
 
 /* Product Card */
+.product-card {
+  position: relative;
+  width: 18.5rem;
+}
+
 .card-product-price {
   display: inline;
   margin: 4px;
+}
+
+/* Sale Badge */
+.sale-badge {
+  background-color: #FAB8c4;
+  color: #3E292D;
+  font-size: 12px;
+  padding: 16px 24px;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  top: 10px;
+  width: auto;
 }

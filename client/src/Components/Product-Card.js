@@ -1,4 +1,5 @@
 import { Card } from "react-bootstrap";
+import SaleBadge from './SaleBadge';
 
 const ProductCard = () => {
   let sampleProduct = {
@@ -6,7 +7,7 @@ const ProductCard = () => {
     name: 'Crystal',
     img: 'https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/ols/IMG_E3148%5B1%5D-0001.JPG/:/rs=w:724,h:966',
     price: 10,
-    sale: false,
+    sale: true,
     inventory: 20,
     color: ["Glitter", "No Glitter"],
     tube: ["Wand Tube", "Squeeze Tube", "Lollipop Tube"],
@@ -19,11 +20,12 @@ const ProductCard = () => {
   }
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="product-card">
       <Card.Img variant="top" src="https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/ols/IMG_E3148%5B1%5D-0001.JPG/:/rs=w:724,h:966" />
+      { sampleProduct.sale && <SaleBadge /> }
       <Card.Body>
         <Card.Title>Crystal</Card.Title>
-        <Card.Text bsPrefix="card-product-price">${sampleProduct.price.toFixed(2)}</Card.Text>
+        { sampleProduct.sale && <Card.Text className="card-product-price">${sampleProduct.price.toFixed(2)}</Card.Text> } 
         <Card.Text bsPrefix="card-product-price">${sampleProduct.price.toFixed(2)}</Card.Text>
       </Card.Body>
     </Card>
