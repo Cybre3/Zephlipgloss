@@ -117,15 +117,9 @@ code {
 }
 
 /* Shopping Cart */
-.cart-item {
-  width: 100%;
-  padding: 1rem;
-  /* margin-bottom: 8px; */
-  display: grid;
-  grid-auto-columns: 1fr 4fr 1fr 1fr 1fr;
-  gap: 8px;
-  /* border-radius: 2px; */
-  place-items: center;
+.cart-thumbnail {
+  height: 100px;
+  width: 100px;
 }
 
 .cart-item-name {
@@ -138,5 +132,5 @@ code {
 }
 
 .cart-item-delete-btn {
-  padding: 5px 10px;
+  padding: 5px px;
 }

@@ -30,7 +30,7 @@ const CartItem = () => {
         <div className="cart-item">
             <div className="cart-item-img">
                 <Link to={`/product/${1}`}>
-                    <img src="https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/ols/IMG_E3148%5B1%5D-0001.JPG/:/rs=w:724,h:966" alt="lipgloss name" />
+                    <img src="https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/ols/IMG_E3148%5B1%5D-0001.JPG/:/rs=w:724,h:966" alt="lipgloss name" className="cart-thumbnail"/>
                 </Link>
             </div>
 
