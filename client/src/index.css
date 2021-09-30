@@ -92,7 +92,6 @@ code {
   justify-content: center;
 }
 
-<<<<<<< HEAD
 /* Product Card */
 .product-card {
   position: relative;
@@ -116,5 +115,28 @@ code {
   top: 10px;
   width: auto;
 }
-=======
->>>>>>> 3d24debe2b73a6c68185458ba78be0bd98b48ccc
+
+/* Shopping Cart */
+.cart-item {
+  width: 100%;
+  padding: 1rem;
+  /* margin-bottom: 8px; */
+  display: grid;
+  grid-auto-columns: 1fr 4fr 1fr 1fr 1fr;
+  gap: 8px;
+  /* border-radius: 2px; */
+  place-items: center;
+}
+
+.cart-item-name {
+  text-decoration: none; /* Removes underline from Link */
+  color: black;
+}
+
+.cart-item-select {
+  padding: 10px 10px;
+}
+
+.cart-item-delete-btn {
+  padding: 5px 10px;
+}

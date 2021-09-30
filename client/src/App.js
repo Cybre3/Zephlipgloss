@@ -9,6 +9,7 @@ import SaleBanner from './Components/SaleBanner';
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
 import ProductDetails from "./Components/Product-Details";
+import ShoppingCart from './Components/ShoppingCart';
 import PrivacyPolicy from "./Components/SubComponents/PrivacyPolicy";
 import TermsAndConditions from "./Components/SubComponents/TermsConditions";
 import Footer from "./Components/Footer";
@@ -54,6 +55,9 @@ const App = (props) => {
             </Route>
             <Route exact path="/product-details">
               <ProductDetails />
+            </Route>
+            <Route exact path="/shopping-cart">
+              <ShoppingCart />
             </Route>
             <Route exact path="/privacy-policy">
               <PrivacyPolicy />
