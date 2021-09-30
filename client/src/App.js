@@ -9,9 +9,10 @@ import SaleBanner from './Components/SaleBanner';
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
 import ProductDetails from "./Components/Product-Details";
-import PrivacyPolicy from "./Components/PrivacyPolicy";
-import TermsAndConditions from "./Components/TermsConditions";
+import PrivacyPolicy from "./Components/SubComponents/PrivacyPolicy";
+import TermsAndConditions from "./Components/SubComponents/TermsConditions";
 import Footer from "./Components/Footer";
+import About from './Components/SubComponents/About';
 
 const App = (props) => {
   const [vantaEffect, setVantaEffect] = useState(0);
@@ -60,6 +61,10 @@ const App = (props) => {
             <Route exact path="/terms-and-conditions">
               <TermsAndConditions />
             </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            
           </Switch>
         </div>
         <Footer />
