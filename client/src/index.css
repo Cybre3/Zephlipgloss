@@ -50,26 +50,11 @@ code {
 }
 
 /* Product Details */
-/* .container {
-  display: grid;
-}
-
-.left-section , .right-section {
-  flex-basis: 100px;
-} */
-
 .product-img {
   height: 435px;
   width: 435px;
   display: block;
 }
-
-/* .right-section {
-  float: right;
-  display: inline;
-  height: 600px;
-  width: 400px;
-} */
 
 /* Button */
 .pink-button {
