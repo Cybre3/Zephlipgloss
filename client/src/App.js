@@ -8,6 +8,7 @@ import FOG from "vanta/dist/vanta.fog.min";
 import SaleBanner from './Components/SaleBanner';
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
+import Shop from './Components/Shop';
 import ProductDetails from "./Components/Product-Details";
 import ShoppingCart from './Components/ShoppingCart';
 import PrivacyPolicy from "./Components/SubComponents/PrivacyPolicy";
@@ -52,6 +53,9 @@ const App = (props) => {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/shop">
+              <Shop />
             </Route>
             <Route exact path="/product-details">
               <ProductDetails />
