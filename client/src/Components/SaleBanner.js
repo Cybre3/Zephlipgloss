@@ -1,4 +1,3 @@
-
 const SaleBanner = (props) => {
   return (
     <div className="container text-center" style={{ backgroundColor: "pink" }}>

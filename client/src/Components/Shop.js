@@ -1,7 +1,7 @@
 // import React, { Component } from "react";
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import ProductCard from "./Product-Card";
+import ProductCard from "./SubComponents/Product-Card";
 import FilterButton from "./SubComponents/FilterButton";
 
 const Shop = () => {
