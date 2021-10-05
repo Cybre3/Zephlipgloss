@@ -100,3 +100,29 @@ code {
   top: 10px;
   width: auto;
 }
+
+/* Shopping Cart */
+.cart-thumbnail {
+  height: 100px;
+  width: 100px;
+}
+
+.cart-item-name {
+  text-decoration: none; /* Removes underline from Link */
+  color: black;
+}
+
+.cart-item-select {
+  padding: 10px 10px;
+}
+
+.cart-item-delete-btn {
+  padding: 5px px;
+}
+
+/* Shop Page - View All Products */
+.products-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 5px;
+}
