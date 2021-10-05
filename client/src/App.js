@@ -15,6 +15,7 @@ import PrivacyPolicy from "./Components/SubComponents/PrivacyPolicy";
 import TermsAndConditions from "./Components/SubComponents/TermsConditions";
 import Footer from "./Components/Footer";
 import About from './Components/SubComponents/About';
+import Sale from './Components/Sale';
 
 const App = (props) => {
   const [vantaEffect, setVantaEffect] = useState(0);
@@ -56,6 +57,9 @@ const App = (props) => {
             </Route>
             <Route exact path="/shop">
               <Shop />
+            </Route>
+            <Route exact path="/sale">
+              <Sale />
             </Route>
             <Route exact path="/product-details">
               <ProductDetails />

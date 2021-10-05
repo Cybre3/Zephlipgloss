@@ -15,4 +15,16 @@ recordRoutes.route("/product").get(function (req, res) {
     });
 });
 
+// Get products on sale
+recordRoutes.route("/sale").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  db_connect
+    .collection("products")
+    .find({ sale: true })
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 module.exports = recordRoutes;
