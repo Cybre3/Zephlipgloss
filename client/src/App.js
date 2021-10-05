@@ -55,28 +55,27 @@ const App = (props) => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/shop">
+            <Route path="/shop">
               <Shop />
             </Route>
-            <Route exact path="/sale">
+            <Route path="/sale">
               <Sale />
             </Route>
-            <Route exact path="/product-details">
+            <Route path="/product/:id">
               <ProductDetails />
             </Route>
-            <Route exact path="/shopping-cart">
+            <Route path="/cart">
               <ShoppingCart />
             </Route>
-            <Route exact path="/privacy-policy">
+            <Route path="/privacy-policy">
               <PrivacyPolicy />
             </Route>
-            <Route exact path="/terms-and-conditions">
+            <Route path="/terms-and-conditions">
               <TermsAndConditions />
             </Route>
             <Route path="/about">
               <About />
             </Route>
-            
           </Switch>
         </div>
         <Footer />

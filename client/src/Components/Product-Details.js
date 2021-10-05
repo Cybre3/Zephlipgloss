@@ -1,7 +1,9 @@
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import PinkButton from './SubComponents/Button';
 
-const ProductDetails = () => {
-    let sampleProduct = {
+const ProductDetails = (prop) => {
+    let product = {
         _id: '1',
         name: 'Crystal',
         img: 'https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/ols/IMG_E3148%5B1%5D-0001.JPG/:/rs=w:724,h:966',
@@ -18,6 +20,16 @@ const ProductDetails = () => {
         reviews: [ '' ],
       }
 
+    // const [product, setProduct] = useState(null);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/product/6158adb68f6bfde75288a0c6`)
+        .then((response) => {
+            console.log(response);
+        //   setProduct(response.data);
+        });
+      }, []);
+
     return (
         <div className="container">
             <div className="row">
@@ -26,32 +38,32 @@ const ProductDetails = () => {
             <div className="row">
                 <div className="col-sm">
                     <div>
-                        <img className="product-img" src={sampleProduct.img} alt={`lipgloss-${sampleProduct.title}`}/>
+                        <img className="product-img" src={product.img} alt={`lipgloss-${product.title}`}/>
                     </div>
                 </div>
                 {/* Add carousel here later */}
                 
                 <div className="col-sm">
-                    <h3 className="product-name-details-pg">{sampleProduct.name}</h3>
+                    <h3 className="product-name-details-pg">{product.name}</h3>
 
-                    <p className="product-price-details-pg">${sampleProduct.price.toFixed(2)}</p>
+                    <p className="product-price-details-pg">${product.price.toFixed(2)}</p>
 
-                    <p className="product-instock">{sampleProduct.inventory > 0 ? "In Stock" : "Out of Stock"}</p>
+                    <p className="product-instock">{product.inventory > 0 ? "In Stock" : "Out of Stock"}</p>
 
                     <p className="select-type-lable">
                         COLOR{' '}
                         <select>
-                            <option value={sampleProduct.color[0]}>{sampleProduct.color[0]}</option>
-                            <option value={sampleProduct.color[1]}>{sampleProduct.color[1]}</option>
+                            <option value={product.color[0]}>{product.color[0]}</option>
+                            <option value={product.color[1]}>{product.color[1]}</option>
                         </select>
                     </p>
 
                     <p className="select-type-lable">
                         TUBE{' '}
                         <select>
-                            <option value={sampleProduct.tube[0]}>{sampleProduct.tube[0]}</option>
-                            <option value={sampleProduct.tube[1]}>{sampleProduct.tube[1]}</option>
-                            <option value={sampleProduct.tube[2]}>{sampleProduct.tube[2]}</option>
+                            <option value={product.tube[0]}>{product.tube[0]}</option>
+                            <option value={product.tube[1]}>{product.tube[1]}</option>
+                            <option value={product.tube[2]}>{product.tube[2]}</option>
                         </select>
                     </p>
 
@@ -66,11 +78,11 @@ const ProductDetails = () => {
                         </select>
                     </p>
 
-                    <p className="description-text">{sampleProduct.description.summary}</p>
+                    <p className="description-text">{product.description.summary}</p>
 
-                    <p className="description-text">{sampleProduct.description.notifications}</p>
+                    <p className="description-text">{product.description.notifications}</p>
 
-                    <p className="description-text">{sampleProduct.description.ingredients}</p>
+                    <p className="description-text">{product.description.ingredients}</p>
 
                     <PinkButton action="Add to Cart"/>
                 </div>

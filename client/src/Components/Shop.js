@@ -38,6 +38,7 @@ const Shop = () => {
     <ProductCard
       product={product}
       key={product._id}
+      location={`/product/${product._id}`}
     />
   ))
 

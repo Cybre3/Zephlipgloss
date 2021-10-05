@@ -1,6 +1,14 @@
 /* MDbootstrap
 @import '~mdb-ui-kit/css/mdb.min.css'; */
 
+h1 {
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
