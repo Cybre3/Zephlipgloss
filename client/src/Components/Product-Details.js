@@ -1,33 +1,23 @@
 import React, { useState, useEffect } from "react";
+// import React, { Component } from "react";
 import axios from 'axios';
 import PinkButton from './SubComponents/Button';
 
 const ProductDetails = (prop) => {
-    let product = {
-        _id: '1',
-        name: 'Crystal',
-        img: 'https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/ols/IMG_E3148%5B1%5D-0001.JPG/:/rs=w:724,h:966',
-        price: 10,
-        sale: false,
-        inventory: 20,
-        color: ["Glitter", "No Glitter"],
-        tube: ["Wand Tube", "Squeeze Tube", "Lollipop Tube"],
-        description: {
-          summary: 'Crystal clear gloss made with or without glitter and a delightful coconut scent. ',
-          notifications: 'DOES NOT CONTAIN COCONUT OIL',
-          ingredients: 'Versagel, Castor Oil, Organic Squalane Oil, Vitamin E  and coconut flavoring.'
-        },
-        reviews: [ '' ],
-      }
-
-    // const [product, setProduct] = useState(null);
+    const [product, setProduct] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/product/6158adb68f6bfde75288a0c6`)
-        .then((response) => {
-            console.log(response);
-        //   setProduct(response.data);
-        });
+        const getProduct = async () => {
+            await axios.get(`http://localhost:5000/product/6158adb68f6bfde75288a0c6`)
+            .then((response) => {
+                console.log(response);
+                setProduct(response.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+        getProduct();
       }, []);
 
     return (
@@ -50,7 +40,7 @@ const ProductDetails = (prop) => {
 
                     <p className="product-instock">{product.inventory > 0 ? "In Stock" : "Out of Stock"}</p>
 
-                    <p className="select-type-lable">
+                    <p className="select-type-label">
                         COLOR{' '}
                         <select>
                             <option value={product.color[0]}>{product.color[0]}</option>
@@ -58,7 +48,7 @@ const ProductDetails = (prop) => {
                         </select>
                     </p>
 
-                    <p className="select-type-lable">
+                    <p className="select-type-label">
                         TUBE{' '}
                         <select>
                             <option value={product.tube[0]}>{product.tube[0]}</option>
@@ -67,7 +57,7 @@ const ProductDetails = (prop) => {
                         </select>
                     </p>
 
-                    <p className="select-type-lable">
+                    <p className="select-type-label">
                         Quantity{' '}
                         <select>
                             <option value="1">1</option>
@@ -80,9 +70,11 @@ const ProductDetails = (prop) => {
 
                     <p className="description-text">{product.description.summary}</p>
 
-                    <p className="description-text">{product.description.notifications}</p>
+                    {product.description.notifications !== "" &&
+                    <p className="description-text">{product.description.notifications}</p>}
 
-                    <p className="description-text">{product.description.ingredients}</p>
+                    {product.description.ingredients !== "" &&
+                    <p className="description-text">{product.description.ingredients}</p>}
 
                     <PinkButton action="Add to Cart"/>
                 </div>
