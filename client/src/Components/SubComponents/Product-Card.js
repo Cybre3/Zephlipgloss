@@ -4,7 +4,7 @@ import SaleBadge from './SaleBadge';
 
 const ProductCard = (props) => {
   return (
-    <Link to={props.location}>
+    <Link to={`/product/${props.product._id}`}>
       <Card className="product-card">
         <Card.Img variant="top" src={props.product.img} />
         { props.product.sale && <SaleBadge /> }

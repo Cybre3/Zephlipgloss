@@ -8,7 +8,7 @@ const Sale = () => {
     useEffect(() => {
       axios.get("http://localhost:5000/sale/")
       .then((response) => {
-        console.log("response", response);
+        console.log("Response", response);
         setSaleProducts(response.data);
       });
     }, []);

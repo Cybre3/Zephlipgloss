@@ -61,7 +61,7 @@ const App = (props) => {
             <Route path="/sale">
               <Sale />
             </Route>
-            <Route path="/product/:id">
+            <Route path="/product/:id" >
               <ProductDetails />
             </Route>
             <Route path="/cart">

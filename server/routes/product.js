@@ -47,12 +47,11 @@ recordRoutes.route("/product/:id").get(function (req, res) {
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
     .collection("products")
-    .findOne(myquery, function (err, result) {
+    .find(myquery)
+    .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
     });
 });
-
-// /product/:id
 
 module.exports = recordRoutes;
