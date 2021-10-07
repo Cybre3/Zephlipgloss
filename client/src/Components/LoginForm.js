@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import FormikControl from "../Form/FormikControl";
+import FormikControl from "./Form/FormikControl";
 
 function LoginForm(props) {
   const initialValues = {
@@ -23,8 +23,8 @@ function LoginForm(props) {
       {(formik) => {
         return (
           <Form>
-            <FormikControl control="chakrainput" type="email" label="Email" name="email" />
-            <FormikControl control="chakrainput" type="password" label="Password" name="password" />
+            <FormikControl control="input" type="email" label="Email" name="email" />
+            <FormikControl control="input" type="password" label="Password" name="password" />
             <button type="submit" disabled={!formik.isValid}>
               Submit
             </button>
