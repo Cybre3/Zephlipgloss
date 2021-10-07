@@ -15,6 +15,8 @@ import PrivacyPolicy from "./Components/SubComponents/PrivacyPolicy";
 import TermsAndConditions from "./Components/SubComponents/TermsConditions";
 import Footer from "./Components/Footer";
 import About from './Components/SubComponents/About';
+import RegistrationForm from './Components/RegistrationForm';
+import LoginForm from './Components/LoginForm';
 
 const App = (props) => {
   const [vantaEffect, setVantaEffect] = useState(0);
@@ -54,19 +56,25 @@ const App = (props) => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/shop">
+            <Route path="/shop">
               <Shop />
             </Route>
-            <Route exact path="/product-details">
+            <Route path="/register">
+              <RegistrationForm />
+            </Route>
+            <Route path="/login">
+              <LoginForm />
+            </Route>
+            <Route path="/product-details">
               <ProductDetails />
             </Route>
-            <Route exact path="/shopping-cart">
+            <Route path="/shopping-cart">
               <ShoppingCart />
             </Route>
-            <Route exact path="/privacy-policy">
+            <Route path="/privacy-policy">
               <PrivacyPolicy />
             </Route>
-            <Route exact path="/terms-and-conditions">
+            <Route path="/terms-and-conditions">
               <TermsAndConditions />
             </Route>
             <Route path="/about">
