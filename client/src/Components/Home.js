@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ProductList from "./SubComponents/ProductList";
 import PinkButton from "./SubComponents/Button";
 import useFetch from "./useFetch";

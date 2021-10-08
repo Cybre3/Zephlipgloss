@@ -65,7 +65,7 @@ const App = (props) => {
             <Route path="/login">
               <LoginForm />
             </Route>
-            <Route path="/product-details">
+            <Route path="/product/:id">
               <ProductDetails />
             </Route>
             <Route path="/shopping-cart">

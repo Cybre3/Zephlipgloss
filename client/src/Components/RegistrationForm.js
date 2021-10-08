@@ -33,6 +33,7 @@ function RegistrationForm(props) {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
       {(formik) => {
+        console.log('Form methods', formik);
         return (
           <Form>
             <FormikControl control="input" type="email" label="Email" name="email" />
