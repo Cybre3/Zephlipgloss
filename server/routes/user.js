@@ -1,7 +1,6 @@
 const express = require("express");
 const recordRoutes = express.Router();
-const dbo = require("../db/conn");
-const ObjectId = require("mongodb").ObjectId;
+const control = require('../controllers/index');
 
 // save user
 recordRoutes.route("/register").post(function (req, res) {
