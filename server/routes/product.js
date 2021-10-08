@@ -1,18 +1,17 @@
 const express = require("express");
 const recordRoutes = express.Router();
-const dbo = require("../db/conn");
-const ObjectId = require("mongodb").ObjectId;
+const control = require('../controllers/index');
 
 // Get all products
-recordRoutes.route("/product").get(function (req, res) {
-  let db_connect = dbo.getDb();
-  db_connect
-    .collection("products")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) throw err;
-      res.json(result);
-    });
-});
+recordRoutes.route("/product").get(control.product.get.all);
+
+// Get products on sale
+recordRoutes.route("/sale").get(control.product.get.sale);
+
+// Get only lip glosses, lip oils, and lip scrubs
+recordRoutes.route("/lip-products").get(control.product.get.lipProducts);
+
+// Get specific product
+recordRoutes.route("/product/:id").get(control.product.get.productById);
 
 module.exports = recordRoutes;
