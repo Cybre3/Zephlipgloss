@@ -9,9 +9,9 @@ const ProductCard = (props) => {
         <Card.Img variant="top" src={props.img} />
         { props.sale && <SaleBadge /> }
         <Card.Body>
-          <Card.Title>{props.name}</Card.Title>
+          {/* <Card.Title>{props.name}</Card.Title>
           { props.sale && <Card.Text className="card-product-price">${ props.price.toFixed(2) }</Card.Text> } 
-          <Card.Text bsPrefix="card-product-price">${ props.price.toFixed(2) }</Card.Text>
+          <Card.Text bsPrefix="card-product-price">${ props.price.toFixed(2) }</Card.Text> */}
         </Card.Body>
       </Card>
     </Link>

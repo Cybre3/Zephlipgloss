@@ -1,24 +1,18 @@
-// import React, { Component } from "react";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import ProductCard from "./SubComponents/Product-Card";
+import ProductList from "./SubComponents/ProductList";
 import FilterButton from "./SubComponents/FilterButton";
+import useFetch from "./useFetch";
+import { useState } from "react";
 
 const Shop = () => {
-  const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("All");
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/product/").then((response) => {
-      setProducts(response.data);
-    });
-  }, []);
+  const { data: products } = useFetch("http://localhost:5000/product/");
 
   const FILTER_MAP = {
     All: () => true,
     Sale: (product) => product.sale,
     Lip_Gloss: (product) => product.category === "lip-gloss",
     Lip_Oil: (product) => product.category === "lip-oil",
+    Lip_Scrub: (product) => product.category === "lip-scrub",
   };
 
   const FILTER_CATEGORIES = Object.keys(FILTER_MAP);
@@ -32,17 +26,15 @@ const Shop = () => {
     />
   ));
 
-  const productList = products
-    .filter(FILTER_MAP[filter])
-    .map((product) => (
-      <ProductCard product={product} key={product._id} location={`/product/${product._id}`} />
-    ));
+  const productList = products.filter(FILTER_MAP[filter])
 
   return (
     <div>
       <h3>All Products</h3>
       <div className="filter-buttons">{filterList}</div>
-      <div className="products-grid-container">{productList}</div>
+      <div className="products-grid-container">
+        <ProductList products={productList} />
+      </div>
     </div>
   );
 };
