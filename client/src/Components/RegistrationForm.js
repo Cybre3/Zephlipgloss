@@ -4,10 +4,6 @@ import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
 
 function RegistrationForm(props) {
-  const options = [
-    { key: "Email", value: "emailmoc" },
-    { key: "Telephone", value: "telephonemoc" },
-  ];
 
   const initialValues = {
     email: "",
