@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(routes.product);
 app.use(routes.user);
+app.use(routes.cart);
 
 const dbo = require("./db/conn");
 

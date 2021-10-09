@@ -4,15 +4,17 @@ import TextError from '../SubComponents/TextError';
 
 function Select(props) {
   const {label, name, options, ...rest} = props;
+
   return (
     <div className='form-control'>
-      <label htmlFor="{name">{label}</label>
+      <label htmlFor={name}>{label}</label>
       <Field as='select' id={name} name={name} {...rest} >
         {
           options.map(option => {
+            console.log(typeof option)
             return (
-              <option key={option.value} value={option.value}>
-                {option.key}
+              <option key={option} value={option}>
+                {option}
               </option>
             )
           })

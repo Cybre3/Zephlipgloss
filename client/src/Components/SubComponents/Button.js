@@ -1,11 +1,8 @@
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const PinkButton = (props) => {
     return (
-        <Link to={props.location}>
-            <Button bsPrefix="pink-button">{props.action}</Button>
-        </Link>
+    <Button bsPrefix="pink-button" disabled={props.disabled} type={props.type}>{props.action}</Button>
     );
 }
  
