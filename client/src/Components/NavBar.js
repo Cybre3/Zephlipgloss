@@ -24,6 +24,8 @@ const NavBar = (props) => {
             <Nav.Link href="/shop">Shop</Nav.Link>
             <Nav.Link href="/sale">SALE</Nav.Link>
             <Nav.Link href="/shopping-cart">Cart</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="instagram.com">Instgram</Nav.Link>
             <NavDropdown title="Explore" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/gallery">Gallery</NavDropdown.Item>
@@ -32,7 +34,7 @@ const NavBar = (props) => {
             </NavDropdown>
             <div className="vr ml-3 mr-4"></div>
             <NavIcon className="bi bi-search" />
-            <NavIcon className="bi bi-cart" linkTo="/cart" />
+            <NavIcon className="bi bi-cart" linkTo="/shopping-cart" />
             <NavIcon className="bi bi-person-lines-fill" linkTo="/user" />
           </Nav>
         </Navbar.Collapse>
