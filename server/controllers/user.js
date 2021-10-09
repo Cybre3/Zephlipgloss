@@ -13,18 +13,41 @@ module.exports = {
           res.json(result);
         });
     },
+    findUserByUsername: (req, res) => {
+      let db_connect = dbo.getDb();
+      console.log('from backend', req.body)
+      let myquery = { username: req.body.email };
+
+      db_connect.collection("users").findOne(myquery, function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+    },
   },
+  
   post: {
     save: (req, res) => {
       let db_connect = dbo.getDb();
+      const { email, password, phone } = req.body;
+
+      console.log(req.body);
+
       let myobj = {
-        person_name: req.body.person_name,
-        person_position: req.body.person_position,
-        person_level: req.body.person_level,
+        username: email,
+        password,
+        phone,
       };
+
+      console.log(myobj);
+
       db_connect.collection("users").insertOne(myobj, function (err, res) {
         if (err) throw err;
       });
     },
+    login: (req, res, next) => {
+      // res.cookie("token", req.token);
+      console.log('token from backend', req.cookies)
+      console.log('req.body from backend', req.body)
+    }
   },
 };
