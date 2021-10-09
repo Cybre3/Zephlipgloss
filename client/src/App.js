@@ -9,7 +9,7 @@ import SaleBanner from './Components/SaleBanner';
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
 import Shop from './Components/Shop';
-import ProductDetails from "./Components/Product-Details";
+import ProductPage from "./Components/ProductPage";
 import ShoppingCart from './Components/ShoppingCart';
 import PrivacyPolicy from "./Components/SubComponents/PrivacyPolicy";
 import TermsAndConditions from "./Components/SubComponents/TermsConditions";
@@ -66,7 +66,11 @@ const App = (props) => {
               <LoginForm />
             </Route>
             <Route path="/product/:id">
+<<<<<<< HEAD
               <ProductDetails />
+=======
+              <ProductPage />
+>>>>>>> 0d0d0468b849a1b1e11da4491447a23ea830d51f
             </Route>
             <Route path="/shopping-cart">
               <ShoppingCart />
@@ -80,7 +84,6 @@ const App = (props) => {
             <Route path="/about">
               <About />
             </Route>
-            
           </Switch>
         </div>
         <Footer />
