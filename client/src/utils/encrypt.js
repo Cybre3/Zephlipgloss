@@ -1,7 +1,6 @@
 const { default: axios } = require("axios");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+require("dotenv").config({ path: "/client/.env" });
 
 module.exports = {
   encrypt: async (password) => {
@@ -12,21 +11,15 @@ module.exports = {
   },
   generateAuthToken: async (values) => {
     const { email, password } = values;
-    console.log('gentok', email)
-
     const userLoginPassword = password;
-    console.log("This is the loginHashPassword", userLoginPassword);
 
     // Get user from DB
     const userDbMatch = await axios
       .get(`http://localhost:5000/user/${email}`)
-      .then((res) => console.log('this is res params', res.data))
+      .then((res) => res.data)
       .catch((err) => console.log("No data available", err));
 
-      console.log("The userDb obj", userDbMatch);
-
     if (!userDbMatch) return console.log("No userDB match");
-    console.log("This is userDb password match", userDbMatch.password);
 
     // compare user loginPage input password to DB user password
     const matchPassword = await bcrypt
@@ -35,9 +28,13 @@ module.exports = {
       .catch((err) => err);
     console.log("Password match is:", matchPassword); // true
 
+    values.dbUser = await userDbMatch;
+    values.passMatch = await matchPassword;
 
-    const token = jwt.sign({ _id: userDbMatch._id }, process.env.SECRET_KEY);
-
+    const token = await axios
+      .post("http://localhost:5000/login", values)
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
 
     return token;
   },

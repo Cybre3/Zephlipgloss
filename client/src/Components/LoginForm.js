@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useCookies } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
 import { generateAuthToken } from "../utils/encrypt";
-import axios from "axios";
 
 function LoginForm(props) {
+  // const [cookies, setCookie] = useCookies(['access_token'])
+
   const initialValues = {
     email: "",
     password: "",
@@ -17,15 +18,7 @@ function LoginForm(props) {
   });
 
   const onSubmit = async (values) => {
-    console.log("frontend values", values);
-    const { email } = values;
-
-    await axios
-      .post("http://localhost:5000/login", values)
-      .get(`http://localhost:5000/user/${email}`)
-      .then((res) => console.log("this is token", res.data.token));
-
-    values.token = await generateAuthToken(values);
+    await generateAuthToken(values);
   };
 
   return (

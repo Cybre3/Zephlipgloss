@@ -6,8 +6,8 @@ const ProductList = ({products}) => {
   return (
     <div className="products-grid-container">
       {products.map((product) => (
-        <Link to={`/product/${product._id}`}>
-          <Card key={product._id} className="product-card">
+        <Link key={product._id} to={`/product/${product._id}`}>
+          <Card className="product-card">
             <Card.Img variant="top" src={product.img} />
             {product.sale && <SaleBadge />}
             <Card.Body>

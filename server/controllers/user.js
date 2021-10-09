@@ -1,5 +1,6 @@
 const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   get: {
@@ -15,8 +16,8 @@ module.exports = {
     },
     findUserByUsername: (req, res) => {
       let db_connect = dbo.getDb();
-      console.log('from backend', req.body)
-      let myquery = { username: req.body.email };
+      console.log("from backend", req.params);
+      let myquery = { username: req.params.email };
 
       db_connect.collection("users").findOne(myquery, function (err, result) {
         if (err) throw err;
@@ -24,7 +25,7 @@ module.exports = {
       });
     },
   },
-  
+
   post: {
     save: (req, res) => {
       let db_connect = dbo.getDb();
@@ -44,10 +45,21 @@ module.exports = {
         if (err) throw err;
       });
     },
-    login: (req, res, next) => {
+    login: async (req, res) => {
+      const { dbUser, passMatch } = req.body;
       // res.cookie("token", req.token);
-      console.log('token from backend', req.cookies)
-      console.log('req.body from backend', req.body)
-    }
+      // console.log('token from backend', req.cookies)
+      if(!passMatch) return console.log('Password did not match');
+
+      res.token = jwt.sign({ _id: dbUser._id }, process.env.SECRET_KEY);
+      console.log("req.body from backend", req.body);
+
+      // { httpOnly: true, maxAge: maxAge * 1000 }
+
+
+      res.cookie('token', res.token);
+
+      res.json(res.token)
+    },
   },
 };
