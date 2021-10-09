@@ -1,5 +1,17 @@
 const express = require("express");
-const recordRoutes = express.Router();
+const user = express.Router();
+const control = require("../controllers/index");
+
+// get all users
+user.route("/user").get(control.user.get.all);
+// get user by id
+user.route("/user/:email").get(control.user.get.findUserByUsername);
 
 // save user
-recordRoutes.route("/register").post();
+user.route("/register").post(control.user.post.save);
+// login user
+user.route("/login").post(control.user.post.login);
+
+
+
+module.exports = user;

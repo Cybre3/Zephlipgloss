@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import ProductDetails from "./Product-Details";
-import ProductList from "./SubComponents/ProductList";
 import useFetch from "./useFetch";
 
 const ProductPage = () => { 

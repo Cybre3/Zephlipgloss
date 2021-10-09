@@ -10,7 +10,7 @@ function FormikContainer(props) {
     { key: "Option 2", value: "option2" },
     { key: "Option 3", value: "option3" },
   ];
-
+  
   const radioOptions = [
     { key: "Option 1", value: "rOption1" },
     { key: "Option 2", value: "rOption2" },
@@ -44,7 +44,7 @@ function FormikContainer(props) {
   const onSubmit = (values) => {
     console.log("Form data", values);
     console.log("Saved data", JSON.parse(JSON.stringify(values)));
-  }
+  };
 
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>

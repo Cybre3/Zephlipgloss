@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useCookies } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
+import { generateAuthToken } from "../utils/encrypt";
 
 function LoginForm(props) {
+  // const [cookies, setCookie] = useCookies(['access_token'])
+
   const initialValues = {
     email: "",
     password: "",
@@ -14,8 +17,8 @@ function LoginForm(props) {
     password: Yup.string().required("Required"),
   });
 
-  const onSubmit = (values) => {
-    console.log("Form data", values);
+  const onSubmit = async (values) => {
+    await generateAuthToken(values);
   };
 
   return (
