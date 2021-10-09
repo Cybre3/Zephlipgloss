@@ -1,54 +1,6 @@
-<<<<<<< HEAD
-import useFetch from "./useFetch";
-import { useParams } from "react-router";
-import React from "react";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import FormikControl from "./Form/FormikControl";
-
-const ProductDetails = (props) => {
-  const { id } = useParams();
-  const { data: product } = useFetch(`http://localhost:5000/product/${id}`);
-  // const { description } = product[0];
-  // console.log("this", description);
-  console.log(id);
-
- 
-
-  // const list = description.map((item, index) => {
-  //   return { key: `Option ${index}`, value: item };
-  // });
-
-  const dropdownOptions = [{ key: "Select an option", value: "" }];
-
-  const initialValues = {
-    email: "",
-    description: "",
-    selectOption: "",
-    radioOption: "",
-    checkboxOption: [],
-    birthDate: null,
-  };
-
-  const validationSchema = Yup.object({
-    email: Yup.string().required("Required"),
-    description: Yup.string().required("Required"),
-    selectOption: Yup.string().required("Required"),
-    radioOption: Yup.string().required("Required"),
-    checkboxOption: Yup.array().required("Required"),
-    birthDate: Yup.date().required("Required").nullable(),
-  });
-
-  const onSubmit = (values) => {
-    console.log("Form data", values);
-    console.log("Saved data", JSON.parse(JSON.stringify(values)));
-  };
-
-=======
 import PinkButton from "./SubComponents/Button";
 
 const ProductDetails = ({products}) => {
->>>>>>> 0d0d0468b849a1b1e11da4491447a23ea830d51f
   return (
     <div className="container">
 
@@ -63,29 +15,6 @@ const ProductDetails = ({products}) => {
             <img className="product-img" src={product.img} alt={`lipgloss-${product.title}`} />
           </div>
         </div>
-<<<<<<< HEAD
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
-          {(formik) => (
-            <div className="col-sm">
-              <h3 className="product-name-details-pg">{product.name}</h3>
-              <Form>
-                <FormikControl
-                  control="select"
-                  label="Select a topic"
-                  name="selectOption"
-                  options={dropdownOptions}
-                />
-                <button type="submit">Submit</button>
-              </Form>
-            </div>
-          )}
-        </Formik>
-      </div>
-=======
         {/* Add carousel here later */}
 
         <div className="col-sm">
@@ -103,7 +32,6 @@ const ProductDetails = ({products}) => {
         </div>
       </div> ))}
 
->>>>>>> 0d0d0468b849a1b1e11da4491447a23ea830d51f
     </div>
   );
 

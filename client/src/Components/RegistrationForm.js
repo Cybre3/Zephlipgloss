@@ -6,10 +6,6 @@ import axios from "axios";
 import { encrypt } from "../utils/encrypt";
 
 function RegistrationForm(props) {
-<<<<<<< HEAD
-=======
-
->>>>>>> 0d0d0468b849a1b1e11da4491447a23ea830d51f
   const initialValues = {
     email: "",
     password: "",
