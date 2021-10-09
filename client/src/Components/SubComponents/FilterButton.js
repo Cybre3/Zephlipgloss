@@ -3,6 +3,7 @@ const FilterButton = (props) => {
         <button
             type="button"
             className="btn toggle-btn"
+            // eslint-disable-next-line jsx-a11y/aria-props
             aria-aria-pressed={props.isPressed}
             onClick={() => props.setFilter(props.category)}
         >

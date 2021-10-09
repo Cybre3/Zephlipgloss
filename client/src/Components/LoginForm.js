@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
+import { generateAuthToken } from "../utils/encrypt";
+import axios from "axios";
 
 function LoginForm(props) {
   const initialValues = {
@@ -14,8 +16,16 @@ function LoginForm(props) {
     password: Yup.string().required("Required"),
   });
 
-  const onSubmit = (values) => {
-    console.log("Form data", values);
+  const onSubmit = async (values) => {
+    console.log("frontend values", values);
+    const { email } = values;
+
+    await axios
+      .post("http://localhost:5000/login", values)
+      .get(`http://localhost:5000/user/${email}`)
+      .then((res) => console.log("this is token", res.data.token));
+
+    values.token = await generateAuthToken(values);
   };
 
   return (

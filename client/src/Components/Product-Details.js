@@ -1,4 +1,3 @@
-import PinkButton from "./SubComponents/Button";
 import useFetch from "./useFetch";
 import { useParams } from "react-router";
 import React from "react";

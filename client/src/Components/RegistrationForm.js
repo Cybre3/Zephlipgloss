@@ -2,18 +2,14 @@ import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
+import axios from "axios";
+import { encrypt } from "../utils/encrypt";
 
 function RegistrationForm(props) {
-  const options = [
-    { key: "Email", value: "emailmoc" },
-    { key: "Telephone", value: "telephonemoc" },
-  ];
-
   const initialValues = {
     email: "",
     password: "",
     confirmPassword: "",
-    modeOfContact: "",
     phone: "",
   };
 
@@ -26,14 +22,29 @@ function RegistrationForm(props) {
     phone: Yup.string().required("Required"),
   });
 
-  const onSubmit = (values) => {
-    console.log("Form data", values);
+  const onSubmit = async (values) => {
+    let { password } = values;
+    const { email, confirmPassword, phone } = values;
+    console.log(values);
+
+    if (!confirmPassword === password) return;
+
+    password = await encrypt(password);
+
+    const aUser = {
+      email,
+      password,
+      phone,
+    };
+
+    axios
+      .post("http://localhost:5000/register", aUser)
+      .then((res) => console.log("User sent to backend", res.data));
   };
 
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
       {(formik) => {
-        console.log('Form methods', formik);
         return (
           <Form>
             <FormikControl control="input" type="email" label="Email" name="email" />
