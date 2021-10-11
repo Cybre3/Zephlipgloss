@@ -1,44 +1,42 @@
-import React, { Component } from "react";
-import axios from 'axios';
-import ProductCard from "./Product-Card";
+import ProductList from "./SubComponents/ProductList";
+import FilterButton from "./SubComponents/FilterButton";
+import useFetch from "./useFetch";
+import { useState } from "react";
 
-export default class AllProducts extends Component {
-  // Constructor stores data from database
-  constructor(props) {
-    super(props);
-    this.state = { products: [] };
-  }
+const Shop = () => {
+  const [filter, setFilter] = useState("All");
+  const { data: products } = useFetch("http://localhost:5000/product/");
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/product/")
-      .then((response) => {
-        this.setState({ products: response.data });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  const FILTER_MAP = {
+    All: () => true,
+    Sale: (product) => product.sale,
+    Lip_Gloss: (product) => product.category === "lip-gloss",
+    Lip_Oil: (product) => product.category === "lip-oil",
+    Lip_Scrub: (product) => product.category === "lip-scrub",
+  };
 
-  productList() {
-    return this.state.products.map((currentProduct) => {
-      return (
-        <ProductCard
-          product={currentProduct}
-          key={currentProduct._id}
-        />
-      );
-    }); 
-  }
+  const FILTER_CATEGORIES = Object.keys(FILTER_MAP);
 
-  render() {
-    return (
-      <div>
-        <h3>All Products</h3>
-        <div className="products-grid-container">
-          {this.productList()}
-        </div>
+  const filterList = FILTER_CATEGORIES.map((category) => (
+    <FilterButton
+      key={category}
+      category={category}
+      isPressed={category === filter}
+      setFilter={setFilter}
+    />
+  ));
+
+  const productList = products.filter(FILTER_MAP[filter])
+
+  return (
+    <div>
+      <h3>All Products</h3>
+      <div className="filter-buttons">{filterList}</div>
+      <div className="products-grid-container">
+        <ProductList products={productList} />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Shop;

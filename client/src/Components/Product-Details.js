@@ -1,82 +1,83 @@
-import PinkButton from './SubComponents/Button';
+import React from "react";
+import { Formik, Form, yupToFormErrors } from "formik";
+import * as Yup from "yup";
+import FormikControl from "./Form/FormikControl";
+import PinkButton from "./SubComponents/Button";
+import axios from "axios";
 
-const ProductDetails = () => {
-    let sampleProduct = {
-        _id: '1',
-        name: 'Crystal',
-        img: 'https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/ols/IMG_E3148%5B1%5D-0001.JPG/:/rs=w:724,h:966',
-        price: 10,
-        sale: false,
-        inventory: 20,
-        color: ["Glitter", "No Glitter"],
-        tube: ["Wand Tube", "Squeeze Tube", "Lollipop Tube"],
-        description: {
-          summary: 'Crystal clear gloss made with or without glitter and a delightful coconut scent. ',
-          notifications: 'DOES NOT CONTAIN COCONUT OIL',
-          ingredients: 'Versagel, Castor Oil, Organic Squalane Oil, Vitamin E  and coconut flavoring.'
-        },
-        reviews: [ '' ],
-      }
+const ProductDetails = ({products}) => {
+  const initialValues = {
+    // name: "",
+    // price: "",
+    quantity: 0,
+  };
 
-    return (
-        <div className="container">
-            <div className="row">
-                <a href="/">All Products</a>
-            </div>
-            <div className="row">
-                <div className="col-sm">
-                    <div>
-                        <img className="product-img" src={sampleProduct.img} alt={`lipgloss-${sampleProduct.title}`}/>
-                    </div>
-                </div>
-                {/* Add carousel here later */}
-                
-                <div className="col-sm">
-                    <h3 className="product-name-details-pg">{sampleProduct.name}</h3>
+  const validationSchema = Yup.object({
+    quantity: Yup.number().moreThan(0),
+  });
 
-                    <p className="product-price-details-pg">${sampleProduct.price.toFixed(2)}</p>
+  const onSubmit = (values) => {
+    const { quantity } = values;
+    console.log("Quantity from product-details form:", quantity);
 
-                    <p className="product-instock">{sampleProduct.inventory > 0 ? "In Stock" : "Out of Stock"}</p>
+    const addToCartProduct = {
+      _id: products[0]._id,
+      name: products[0].name,
+      price: products[0].price,
+      quantity: quantity,
+    }
 
-                    <p className="select-type-lable">
-                        COLOR{' '}
-                        <select>
-                            <option value={sampleProduct.color[0]}>{sampleProduct.color[0]}</option>
-                            <option value={sampleProduct.color[1]}>{sampleProduct.color[1]}</option>
-                        </select>
-                    </p>
+    axios
+      .post("http://localhost:5000/shopping-cart", addToCartProduct)
+      .then((res) => console.log("Product added to cart", res.data));
+  
+  };
 
-                    <p className="select-type-lable">
-                        TUBE{' '}
-                        <select>
-                            <option value={sampleProduct.tube[0]}>{sampleProduct.tube[0]}</option>
-                            <option value={sampleProduct.tube[1]}>{sampleProduct.tube[1]}</option>
-                            <option value={sampleProduct.tube[2]}>{sampleProduct.tube[2]}</option>
-                        </select>
-                    </p>
+  return (
+    <div className="container">
 
-                    <p className="select-type-lable">
-                        Quantity{' '}
-                        <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </p>
+      <div className="row">
+        <a href="/shop">All Products</a>
+      </div>
 
-                    <p className="description-text">{sampleProduct.description.summary}</p>
-
-                    <p className="description-text">{sampleProduct.description.notifications}</p>
-
-                    <p className="description-text">{sampleProduct.description.ingredients}</p>
-
-                    <PinkButton action="Add to Cart"/>
-                </div>
-            </div>
+      { products.map((product) => (
+      <div className="row">
+        <div className="col-sm">
+          <div>
+            <img className="product-img" src={product.img} alt={`lipgloss-${product.title}`} />
+          </div>
         </div>
-    );
-}
- 
+        {/* Add carousel here later */}
+
+        <div className="col-sm">
+          <h3 className="product-name-details-pg">{product.name}</h3>
+
+          <p className="product-price-details-pg">${product.price.toFixed(2)}</p>
+
+          <p className="product-instock">{product.inventory > 0 ? "In Stock" : "Out of Stock"}</p>
+
+          <p className="description-text">{product.description.summary}</p>
+          { product.description.notifications !== "" && <p className="description-text">{product.description.notifications}</p> }
+          { product.description.ingredients !== "" &&<p className="description-text">Ingredients: {product.description.ingredients}</p> }
+
+          <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+            {(formik) => {
+              return (
+                <Form>
+                  <FormikControl control="select" label="Quantity" name="quantity" options={[0, 1, 2, 3, 4, 5]}/>
+                  <PinkButton action="Submit" disabled={!formik.isValid} type="submit"/>
+                </Form>
+              );
+            }}
+          </Formik>
+
+          
+        </div>
+      </div> ))}
+
+    </div>
+  );
+
+};
+
 export default ProductDetails;

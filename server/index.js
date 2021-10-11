@@ -1,11 +1,19 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-require("dotenv").config({ path: "./config.env" });
+const cookieParser = require('cookie-parser');
+require("dotenv").config();
 const port = process.env.PORT || 5000;
+const routes = require('./routes/index')
+
+
 app.use(cors());
 app.use(express.json());
-app.use(require("./routes/product"));
+app.use(cookieParser());
+app.use(routes.product);
+app.use(routes.user);
+app.use(routes.cart);
+
 const dbo = require("./db/conn");
 
 app.listen(port, () => {
