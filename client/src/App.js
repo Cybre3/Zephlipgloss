@@ -8,6 +8,7 @@ import SaleBanner from './Components/SaleBanner';
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
 import Shop from './Components/Shop';
+import Sale from './Components/Sale';
 import ProductPage from "./Components/ProductPage";
 import ShoppingCart from './Components/ShoppingCart';
 import PrivacyPolicy from "./Components/SubComponents/PrivacyPolicy";
@@ -57,6 +58,9 @@ const App = (props) => {
             </Route>
             <Route path="/shop">
               <Shop />
+            </Route>
+            <Route path="/sale">
+              <Sale />
             </Route>
             <Route path="/register">
               <RegistrationForm />
