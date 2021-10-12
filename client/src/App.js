@@ -17,6 +17,7 @@ import Footer from "./Components/Footer";
 import About from './Components/SubComponents/About';
 import RegistrationForm from './Components/RegistrationForm';
 import LoginForm from './Components/LoginForm';
+import PageNotFound from './Components/404';
 
 const App = (props) => {
   // const [vantaEffect, setVantaEffect] = useState(0);
@@ -82,6 +83,9 @@ const App = (props) => {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="*">
+              <PageNotFound />
             </Route>
           </Switch>
         </div>

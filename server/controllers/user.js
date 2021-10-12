@@ -41,8 +41,10 @@ module.exports = {
 
       console.log(myobj);
 
-      db_connect.collection("users").insertOne(myobj, function (err, res) {
+      db_connect.collection("users").insertOne(myobj, function (err, result) {
         if (err) throw err;
+        let redir = { redirect: "/"};
+        res.json(redir);
       });
     },
     login: async (req, res) => {

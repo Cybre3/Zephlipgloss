@@ -39,7 +39,12 @@ function RegistrationForm(props) {
 
     axios
       .post("http://localhost:5000/register", aUser)
-      .then((res) => console.log("User sent to backend", res.data));
+      .then((res) => {
+        console.log("User added to database", res.data);
+        if (res.data.redirect === "/") {
+          window.location = "/"
+        }
+      });
   };
 
   return (
