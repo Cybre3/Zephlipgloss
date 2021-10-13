@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ProductList from "./SubComponents/ProductList";
 import PinkButton from "./SubComponents/Button";
 import useFetch from "./useFetch";
@@ -14,7 +15,9 @@ const Home = () => {
         <h1>Making Beauty Personal</h1>
         <h4>Organic Lip Gloss, Scrub, Oil, & Body Butter</h4>
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <PinkButton action="Shop Now" location="/shop" />
+          <Link to="/shop">
+            <PinkButton action="Shop Now" location="/shop" />
+          </Link>
         </div>
       </div>
       <ProductList products={top3LipProducts} />
