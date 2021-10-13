@@ -19,10 +19,11 @@ const ProductDetails = ({products}) => {
   const onSubmit = (values) => {
     const { quantity } = values;
     console.log("Quantity from product-details form:", quantity);
-
+    console.log(products[0].img);
     const addToCartProduct = {
       _id: products[0]._id,
       name: products[0].name,
+      img: products[0].img,
       price: products[0].price,
       quantity: quantity,
     }
@@ -65,6 +66,7 @@ const ProductDetails = ({products}) => {
               return (
                 <Form>
                   <FormikControl control="select" label="Quantity" name="quantity" options={[0, 1, 2, 3, 4, 5]}/>
+                  <br />
                   <PinkButton action="Submit" disabled={!formik.isValid} type="submit"/>
                 </Form>
               );
