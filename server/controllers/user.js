@@ -54,5 +54,21 @@ module.exports = {
       let token = jwt.sign({ _id: dbUser._id }, process.env.SECRET_KEY);
       res.json({ token: token });
     },
+  },
+
+  delete: {
+    logout: async (req, res) => {
+      let db_connect = dbo.getDb();
+      console.log('logout route working')
+
+      await db_connect.collection('carts').deleteMany({}, function(err, obj) {
+        console.log('deleted');
+        res.status(303);
+        console.log("res message", res.status())
+      });
+
+
+      console.log('made it!')
+    },
   }
 };
