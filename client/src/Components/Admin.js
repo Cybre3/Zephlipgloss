@@ -11,3 +11,6 @@ function Admin(props) {
 }
 
 export default Admin;
+
+// TODO: add side bar with add, update and delete 
+// TODO: contact page
