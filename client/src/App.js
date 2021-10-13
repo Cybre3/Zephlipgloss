@@ -19,6 +19,9 @@ import RegistrationForm from './Components/RegistrationForm';
 import LoginForm from './Components/LoginForm';
 import PageNotFound from './Components/404';
 import AuthApi from './utils/authApi';
+import Logout from './Components/Logout';
+import Admin from './Components/Admin';
+import Subscribe from './Components/SubComponents/Subscribe';
 
 const App = (props) => {
   const [auth, setAuth] = useState(null);
@@ -78,6 +81,9 @@ const App = (props) => {
               {/* <Route>
                 <LoginForm />
               </Route> */}
+              <Route path="/logout">
+                <Logout />
+              </Route>
               <Route path="/product/:id">
                 <ProductPage />
               </Route>
@@ -92,6 +98,9 @@ const App = (props) => {
               </Route>
               <Route path="/about">
                 <About />
+              </Route>
+              <Route path="/admin">
+                <Admin />
               </Route>
               <Route path="*">
                 <PageNotFound />

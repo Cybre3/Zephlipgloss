@@ -39,6 +39,9 @@ const NavBar = (props) => {
               <NavDropdown.Item href="/blog">Blog</NavDropdown.Item>
               <NavDropdown.Item href="/contactus">Contact Us</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
+            <Nav.Link href="/logout">Logout</Nav.Link>
             <div className="vr ml-3 mr-4"></div>
             <NavIcon class="bi bi-search" />
             <NavIcon class="bi bi-cart" linkTo="/shopping-cart" />

@@ -8,6 +8,7 @@ import authApi from "../utils/authApi";
 function LoginForm(props) {
   const { auth, setAuth } = useContext(authApi); // User Context
   console.log("auth: ", auth);
+
   const initialValues = {
     email: "",
     password: "",

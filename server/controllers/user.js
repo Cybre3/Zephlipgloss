@@ -47,11 +47,12 @@ module.exports = {
         res.json(redir);
       });
     },
+
     login: async (req, res) => {
       const { dbUser, passMatch } = req.body;
       if(!passMatch) return console.log('Password did not match');
       let token = jwt.sign({ _id: dbUser._id }, process.env.SECRET_KEY);
       res.json({ token: token });
     },
-  },
+  }
 };
