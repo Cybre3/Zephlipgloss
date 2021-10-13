@@ -28,15 +28,15 @@ module.exports = {
     
     post: {
         save: (req, res) => {
-          console.log("I made it here");
           let db_connect = dbo.getDb();
-          const { _id, name, price, quantity } = req.body;
+          const { _id, name, img, price, quantity } = req.body;
     
           console.log(req.body);
     
           let myobj = {
             _id,
             name,
+            img,
             price, 
             quantity,
           };

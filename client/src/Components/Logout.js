@@ -20,7 +20,7 @@ function Logout(props) {
       console.log("This is error message", error.message);
       console.error("There was an error!", error);
     });
-
+    localStorage.clear()
     return <Redirect to='/' />
 }
 

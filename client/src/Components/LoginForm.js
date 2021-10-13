@@ -2,18 +2,18 @@ import loginCSS from "../login.css";
 // import React, { useCookies } from "react";
 import PinkButton from "./SubComponents/Button";
 
-import React from "react";
+// import React from "react";
+import React, { useContext, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
 import { generateAuthToken } from "../utils/encrypt";
 import { Link, useHistory } from "react-router-dom";
+import authApi from "../utils/authApi";
 
 function LoginForm(props) {
-  // const [cookies, setCookie] = useCookies(['validToken']);
-  // const date = new Date();
-  // const options = { httpOnly: true, maxAge: date.getDate() * 1000, path: '/' }
-  const history = useHistory();
+  const { auth, setAuth } = useContext(authApi); // User Context
+  console.log("auth: ", auth);
 
   const initialValues = {
     email: "",
@@ -26,10 +26,13 @@ function LoginForm(props) {
   });
 
   const onSubmit = async (values) => {
-    const user = await generateAuthToken(values);
-    console.log("frontend token", user);
-    // setCookie('validToken', user.token, options);
-    history.push("/");
+    let token = await generateAuthToken(values);
+
+    if (token !== "") {
+      localStorage.setItem('cookie', token);
+      // setAuth(true);
+      window.location = "/"
+    }
   };
 
   return (

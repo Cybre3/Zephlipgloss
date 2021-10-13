@@ -1,11 +1,17 @@
+import ProductList from "./SubComponents/ProductList";
+import useFetch from "./useFetch";
+
+
 const Sale = () => {
+    const { data: products } = useFetch("http://localhost:5000/sale");
+  
     return (
-        <div>
-            <h1>Sale Page</h1>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vulputate metus in nibh viverra aliquet. Sed eu purus a magna elementum bibendum. Sed eu tincidunt nisl. Aliquam vitae lacus elit. Fusce et quam viverra, tristique diam eu, luctus tellus. Nullam laoreet vulputate arcu id cursus. Proin sit amet tortor tristique, sollicitudin massa at, tristique nibh.
-            </p>
+      <div>
+        <h3>Sale Items</h3>
+        <div className="products-grid-container">
+            <ProductList products={products} />
         </div>
+      </div>
     );
 }
  

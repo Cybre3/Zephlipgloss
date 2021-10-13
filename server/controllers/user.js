@@ -41,27 +41,21 @@ module.exports = {
 
       console.log(myobj);
 
-      db_connect.collection("users").insertOne(myobj, function (err, res) {
+      db_connect.collection("users").insertOne(myobj, function (err, result) {
         if (err) throw err;
+        let redir = { redirect: "/"};
+        res.json(redir);
       });
     },
 
     login: async (req, res) => {
       const { dbUser, passMatch } = req.body;
-      // res.cookie("token", req.token);
-      // console.log('token from backend', req.cookies)
-      if (!passMatch) return console.log("Password did not match");
-
-      req.body.token = jwt.sign({ _id: dbUser._id }, process.env.SECRET_KEY);
-      console.log("req.body from backend", req.body);
-
-      res.cookie('token', req.body.token);
-      res.json(req.body);
+      if(!passMatch) return console.log('Password did not match');
+      let token = jwt.sign({ _id: dbUser._id }, process.env.SECRET_KEY);
+      res.json({ token: token });
     },
-
-    
   },
-  
+
   delete: {
     logout: async (req, res) => {
       let db_connect = dbo.getDb();
