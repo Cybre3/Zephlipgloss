@@ -33,9 +33,9 @@ const NavBar = (props) => {
               <NavDropdown.Item href="/contactus">Contact Us</NavDropdown.Item>
             </NavDropdown>
             <div className="vr ml-3 mr-4"></div>
-            <NavIcon className="bi bi-search" />
-            <NavIcon className="bi bi-cart" linkTo="/shopping-cart" />
-            <NavIcon className="bi bi-person-lines-fill" linkTo="/user" />
+            <NavIcon class="bi bi-search" />
+            <NavIcon class="bi bi-cart" linkTo="/shopping-cart" />
+            <NavIcon class="bi bi-person-lines-fill" linkTo="/user" />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
