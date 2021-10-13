@@ -51,15 +51,13 @@ module.exports = {
       // console.log('token from backend', req.cookies)
       if(!passMatch) return console.log('Password did not match');
 
-      res.token = jwt.sign({ _id: dbUser._id }, process.env.SECRET_KEY);
+      req.body.token = jwt.sign({ _id: dbUser._id }, process.env.SECRET_KEY);
       console.log("req.body from backend", req.body);
 
-      // { httpOnly: true, maxAge: maxAge * 1000 }
+      
 
+      res.json(req.body)
 
-      res.cookie('token', res.token);
-
-      res.json(res.token)
     },
   },
 };
