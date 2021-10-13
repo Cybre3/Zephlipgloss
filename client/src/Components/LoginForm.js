@@ -1,4 +1,5 @@
-import React, { useCookies } from "react";
+// import React, { useCookies } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
@@ -7,9 +8,9 @@ import { useHistory } from "react-router-dom";
 
 
 function LoginForm(props) {
-  const [cookies, setCookie] = useCookies(['validToken']);
-  const date = new Date();
-  const options = { httpOnly: true, maxAge: date.getDate() * 1000, path: '/' }
+  // const [cookies, setCookie] = useCookies(['validToken']);
+  // const date = new Date();
+  // const options = { httpOnly: true, maxAge: date.getDate() * 1000, path: '/' }
   const history = useHistory();
 
   const initialValues = {
@@ -25,8 +26,8 @@ function LoginForm(props) {
   const onSubmit = async (values) => {
     const user = await generateAuthToken(values);
     console.log('frontend token', user)
-    setCookie('validToken', user.token, options);
-    // history.push("/");
+    // setCookie('validToken', user.token, options);
+    history.push("/");
   };
 
   return (

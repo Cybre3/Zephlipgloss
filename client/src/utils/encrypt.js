@@ -33,7 +33,10 @@ module.exports = {
 
     const token = await axios
       .post("http://localhost:5000/login", values)
-      .then((res) => res.data)
+      .then((res) => {
+        // res.cookie('token', res.data.token);
+        return res.data;
+      })
       .catch((err) => console.log(err));
 
     return token;
