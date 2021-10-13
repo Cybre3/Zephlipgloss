@@ -18,7 +18,12 @@ function LoginForm(props) {
   });
 
   const onSubmit = async (values) => {
-    await generateAuthToken(values);
+    let token = await generateAuthToken(values);
+    console.log("Login form token", token);
+    if (token != "") {
+      localStorage.setItem('cookie', token);
+      window.location = "/"
+    }
   };
 
   return (

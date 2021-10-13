@@ -18,6 +18,7 @@ import About from './Components/SubComponents/About';
 import RegistrationForm from './Components/RegistrationForm';
 import LoginForm from './Components/LoginForm';
 import PageNotFound from './Components/404';
+// import AuthAPI from './utils/auth';
 
 const App = (props) => {
   // const [vantaEffect, setVantaEffect] = useState(0);
@@ -46,6 +47,7 @@ const App = (props) => {
   //     if (vantaEffect) vantaEffect.destroy();
   //   };
   // }, [vantaEffect]);
+  // const authApi = useContext(AuthAPI);
 
   return (
     <Router>
@@ -66,7 +68,8 @@ const App = (props) => {
             <Route path="/register">
               <RegistrationForm />
             </Route>
-            <Route path="/login">
+            {/* <Route path="/login" auth={authApi.auth} render={(props) => !auth ? {LoginForm} : <Redirect to="/terms-and-conditions" />} /> */}
+            <Route>
               <LoginForm />
             </Route>
             <Route path="/product/:id">

@@ -31,11 +31,15 @@ module.exports = {
     values.dbUser = await userDbMatch;
     values.passMatch = await matchPassword;
 
-    const token = await axios
+    let token = "";
+    await axios
       .post("http://localhost:5000/login", values)
-      .then((res) => res.data)
+      .then((res) => {
+        console.log("This is res.data", res.data);
+         token = res.data.token;
+      })
       .catch((err) => console.log(err));
-
+      console.log("I am token ", token);
     return token;
   },
 };
