@@ -22,6 +22,8 @@ import AuthApi from './utils/authApi';
 import Logout from './Components/Logout';
 import Admin from './Components/Admin';
 import Subscribe from './Components/SubComponents/Subscribe';
+import Contact from './Components/SubComponents/Contact';
+import AddItem from './Components/Admin/AddItem';
 
 const App = (props) => {
   const [auth, setAuth] = useState(null);
@@ -96,12 +98,27 @@ const App = (props) => {
               <Route path="/terms-and-conditions">
                 <TermsAndConditions />
               </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/subscribe">
+                <Subscribe />
+              </Route>
               <Route path="/about">
                 <About />
               </Route>
-              <Route path="/admin">
+              {/* <Route path="/admin">
+                <Admin />
+              </Route> */}
+              {/* <Route path="/admin/add-new-product">
+                <AddItem />
+              </Route> */}
+              {/* <Route path="/admin/updateProduct/:id">
                 <Admin />
               </Route>
+              <Route path="/admin/deleteProduct/:id">
+                <Admin />
+              </Route> */}
               <Route path="*">
                 <PageNotFound />
               </Route>

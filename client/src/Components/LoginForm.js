@@ -24,7 +24,7 @@ function LoginForm(props) {
 
     if (token !== "") {
       localStorage.setItem('cookie', token);
-      setAuth(true);
+      // setAuth(true);
       window.location = "/"
     }
   };
@@ -36,9 +36,7 @@ function LoginForm(props) {
           <Form>
             <FormikControl control="input" type="email" label="Email" name="email" />
             <FormikControl control="input" type="password" label="Password" name="password" />
-            <button type="submit" disabled={!formik.isValid} onClick={ () => {
-              setAuth(true);
-            }}>
+            <button type="submit" disabled={!formik.isValid}>
               Submit
             </button>
           </Form>

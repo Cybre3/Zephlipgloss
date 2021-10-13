@@ -22,6 +22,7 @@ function Subscribe(props) {
       return (
         <Form className=''>
           <FormikControl className='form-control' label="Subscribe" control="input" placeholder="Enter your email here" name="email" />
+          <br />
           <button type="submit" disabled={!formik.isValid}>
             Submit
           </button>
