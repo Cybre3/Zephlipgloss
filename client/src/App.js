@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "bootstrap/dist/js/bootstrap.min.js";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 // import FOG from "vanta/dist/vanta.fog.min";
 
@@ -21,7 +21,8 @@ import PageNotFound from './Components/404';
 import AuthApi from './utils/authApi';
 
 const App = (props) => {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(null);
+  const value = useMemo(() => ({ auth, setAuth }), [auth, setAuth]);
   // const [vantaEffect, setVantaEffect] = useState(0);
   // const myRef = useRef(null);
   // useEffect(() => {

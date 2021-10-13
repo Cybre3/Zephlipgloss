@@ -6,10 +6,8 @@ import { generateAuthToken } from "../utils/encrypt";
 import authApi from "../utils/authApi";
 
 function LoginForm(props) {
-  const { setAuthenticated } = useContext(authApi);
-  console.log("hiiiiiiii: ", setAuthenticated);
-  const [isLoggedIn, setLogin] = useState(null);
-
+  const { auth, setAuth } = useContext(authApi); // User Context
+  console.log("auth: ", auth);
   const initialValues = {
     email: "",
     password: "",
@@ -22,16 +20,10 @@ function LoginForm(props) {
 
   const onSubmit = async (values) => {
     let token = await generateAuthToken(values);
-    console.log("Login form token", token);
-    setLogin(true);
+
     if (token !== "") {
-      
       localStorage.setItem('cookie', token);
-      console.log("This is method", isLoggedIn);
-      localStorage.setItem("isLoggedIn", isLoggedIn);
-      console.log("Ooooooi: ", setAuthenticated);
-      // setAuthenticated(true);
-      console.log("hihi: ", setAuthenticated);
+      setAuth(true);
       window.location = "/"
     }
   };
@@ -43,7 +35,9 @@ function LoginForm(props) {
           <Form>
             <FormikControl control="input" type="email" label="Email" name="email" />
             <FormikControl control="input" type="password" label="Password" name="password" />
-            <button type="submit" disabled={!formik.isValid}>
+            <button type="submit" disabled={!formik.isValid} onClick={ () => {
+              setAuth(true);
+            }}>
               Submit
             </button>
           </Form>
