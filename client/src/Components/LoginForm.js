@@ -3,9 +3,14 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
 import { generateAuthToken } from "../utils/encrypt";
+import { useHistory } from "react-router-dom";
+
 
 function LoginForm(props) {
-  // const [cookies, setCookie] = useCookies(['access_token'])
+  const [cookies, setCookie] = useCookies(['validToken']);
+  const date = new Date();
+  const options = { httpOnly: true, maxAge: date.getDate() * 1000, path: '/' }
+  const history = useHistory();
 
   const initialValues = {
     email: "",
@@ -18,7 +23,10 @@ function LoginForm(props) {
   });
 
   const onSubmit = async (values) => {
-    await generateAuthToken(values);
+    const user = await generateAuthToken(values);
+    console.log('frontend token', user)
+    setCookie('validToken', user.token, options);
+    // history.push("/");
   };
 
   return (

@@ -1,6 +1,38 @@
+import React from "react";
+import { Formik, Form, yupToFormErrors } from "formik";
+import * as Yup from "yup";
+import FormikControl from "./Form/FormikControl";
 import PinkButton from "./SubComponents/Button";
+import axios from "axios";
 
 const ProductDetails = ({products}) => {
+  const initialValues = {
+    // name: "",
+    // price: "",
+    quantity: 0,
+  };
+
+  const validationSchema = Yup.object({
+    quantity: Yup.number().moreThan(0),
+  });
+
+  const onSubmit = (values) => {
+    const { quantity } = values;
+    console.log("Quantity from product-details form:", quantity);
+
+    const addToCartProduct = {
+      _id: products[0]._id,
+      name: products[0].name,
+      price: products[0].price,
+      quantity: quantity,
+    }
+
+    axios
+      .post("http://localhost:5000/shopping-cart", addToCartProduct)
+      .then((res) => console.log("Product added to cart", res.data));
+  
+  };
+
   return (
     <div className="container">
 
@@ -28,71 +60,24 @@ const ProductDetails = ({products}) => {
           { product.description.notifications !== "" && <p className="description-text">{product.description.notifications}</p> }
           { product.description.ingredients !== "" &&<p className="description-text">Ingredients: {product.description.ingredients}</p> }
 
-          <PinkButton action="Add to Cart" />
+          <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+            {(formik) => {
+              return (
+                <Form>
+                  <FormikControl control="select" label="Quantity" name="quantity" options={[0, 1, 2, 3, 4, 5]}/>
+                  <PinkButton action="Submit" disabled={!formik.isValid} type="submit"/>
+                </Form>
+              );
+            }}
+          </Formik>
+
+          
         </div>
       </div> ))}
 
     </div>
   );
 
-  // return (
-
-  // <div className="container">
-  //   <div className="row">
-  //     <a href="/">All Products</a>
-  //   </div>
-  //   <div className="row">
-  //     <div className="col-sm">
-  //       <div>
-  //         <img className="product-img" src={product[0].img} alt={`lipgloss-${product.title}`} />
-  //       </div>
-  //     </div>
-  //     {/* Add carousel here later */}
-
-  //     <div className="col-sm">
-  //       <h3 className="product-name-details-pg">{product.name}</h3>
-
-  //       <p className="product-price-details-pg">${product.price}</p>
-
-  //       <p className="product-instock">{product.inventory > 0 ? "In Stock" : "Out of Stock"}</p>
-
-  //       <p className="select-type-lable">
-  //         COLOR{" "}
-  //         <select>
-  //           {/* <option value={product.color[0]}>{product.color[0]}</option>
-  //           <option value={product.color[1]}>{product.color[1]}</option> */}
-  //         </select>
-  //       </p>
-
-  //       <p className="select-type-lable">
-  //         TUBE{" "}
-  //         <select>
-  //           {/* <option value={product.tube[0]}>{product.tube[0]}</option>
-  //           <option value={product.tube[1]}>{product.tube[1]}</option>
-  //           <option value={product.tube[2]}>{product.tube[2]}</option> */}
-  //         </select>
-  //       </p>
-
-  //       <p className="select-type-lable">
-  //         Quantity{" "}
-  //         <select>
-  //           <option value="1">1</option>
-  //           <option value="2">2</option>
-  //           <option value="3">3</option>
-  //           <option value="4">4</option>
-  //           <option value="5">5</option>
-  //         </select>
-  //       </p>
-
-  //       {/* {description.map((item) => (
-  //         <p>{item}</p>
-  //       ))} */}
-
-  //       <PinkButton action="Add to Cart" />
-  //     </div>
-  //   </div>
-  // </div>
-  //);
 };
 
 export default ProductDetails;
