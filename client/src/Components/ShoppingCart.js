@@ -1,5 +1,4 @@
 import PinkButton from "./SubComponents/Button";
-import CartItem from "./SubComponents/CartItem";
 import CartList from "./SubComponents/CartList";
 import useFetch from "./useFetch";
 

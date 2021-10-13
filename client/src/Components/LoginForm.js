@@ -1,11 +1,14 @@
-import React, { useCookies } from "react";
+import React, { useContext, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
 import { generateAuthToken } from "../utils/encrypt";
+import authApi from "../utils/authApi";
 
 function LoginForm(props) {
-  // const [cookies, setCookie] = useCookies(['access_token'])
+  const { setAuthenticated } = useContext(authApi);
+  console.log("hiiiiiiii: ", setAuthenticated);
+  const [isLoggedIn, setLogin] = useState(null);
 
   const initialValues = {
     email: "",
@@ -20,8 +23,15 @@ function LoginForm(props) {
   const onSubmit = async (values) => {
     let token = await generateAuthToken(values);
     console.log("Login form token", token);
-    if (token != "") {
+    setLogin(true);
+    if (token !== "") {
+      
       localStorage.setItem('cookie', token);
+      console.log("This is method", isLoggedIn);
+      localStorage.setItem("isLoggedIn", isLoggedIn);
+      console.log("Ooooooi: ", setAuthenticated);
+      // setAuthenticated(true);
+      console.log("hihi: ", setAuthenticated);
       window.location = "/"
     }
   };

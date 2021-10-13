@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "bootstrap/dist/js/bootstrap.min.js";
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 // import FOG from "vanta/dist/vanta.fog.min";
 
 import SaleBanner from './Components/SaleBanner';
@@ -18,9 +18,10 @@ import About from './Components/SubComponents/About';
 import RegistrationForm from './Components/RegistrationForm';
 import LoginForm from './Components/LoginForm';
 import PageNotFound from './Components/404';
-// import AuthAPI from './utils/auth';
+import AuthApi from './utils/authApi';
 
 const App = (props) => {
+  const [auth, setAuth] = useState(false);
   // const [vantaEffect, setVantaEffect] = useState(0);
   // const myRef = useRef(null);
   // useEffect(() => {
@@ -48,53 +49,58 @@ const App = (props) => {
   //   };
   // }, [vantaEffect]);
   // const authApi = useContext(AuthAPI);
-
+  console.log(AuthApi);
   return (
-    <Router>
-      <div> {/* ref={myRef} */}
-        <SaleBanner />
-        <NavBar image="https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/new%20logo.jpg/:/rs=h:168,cg:true,m/qt=q:100/ll" />
-        <div>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/shop">
-              <Shop />
-            </Route>
-            <Route path="/sale">
-              <Sale />
-            </Route>
-            <Route path="/register">
-              <RegistrationForm />
-            </Route>
-            {/* <Route path="/login" auth={authApi.auth} render={(props) => !auth ? {LoginForm} : <Redirect to="/terms-and-conditions" />} /> */}
-            <Route>
-              <LoginForm />
-            </Route>
-            <Route path="/product/:id">
-              <ProductPage />
-            </Route>
-            <Route path="/shopping-cart">
-              <ShoppingCart />
-            </Route>
-            <Route path="/privacy-policy">
-              <PrivacyPolicy />
-            </Route>
-            <Route path="/terms-and-conditions">
-              <TermsAndConditions />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="*">
-              <PageNotFound />
-            </Route>
-          </Switch>
+    <AuthApi.Provider value={{ auth, setAuth }}>
+      <Router>
+        <div> {/* ref={myRef} */}
+          <SaleBanner />
+          <NavBar 
+          image="https://img1.wsimg.com/isteam/ip/98d8e522-d343-47fd-9248-a2483aa95966/new%20logo.jpg/:/rs=h:168,cg:true,m/qt=q:100/ll" 
+          />
+          <div>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/shop">
+                <Shop />
+              </Route>
+              <Route path="/sale">
+                <Sale />
+              </Route>
+              <Route path="/register" auth={AuthApi} render={(props) => !auth ? <RegistrationForm /> : <Redirect to="/" />} />
+              {/* <Route path="/register">
+                <RegistrationForm />
+              </Route> */}
+              <Route path="/login" auth={{ auth, setAuth }} render={(props) => !auth ? <LoginForm /> : <Redirect to="/" />} />
+              {/* <Route>
+                <LoginForm />
+              </Route> */}
+              <Route path="/product/:id">
+                <ProductPage />
+              </Route>
+              <Route path="/shopping-cart">
+                <ShoppingCart />
+              </Route>
+              <Route path="/privacy-policy">
+                <PrivacyPolicy />
+              </Route>
+              <Route path="/terms-and-conditions">
+                <TermsAndConditions />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="*">
+                <PageNotFound />
+              </Route>
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </AuthApi.Provider>
   );
 };
 

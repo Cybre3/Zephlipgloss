@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
 import axios from "axios";
 import { encrypt } from "../utils/encrypt";
+import AuthApi from "../utils/authApi";
 
 function RegistrationForm(props) {
+  const authApi = useContext(AuthApi);
+  console.log("authApi: ", authApi);
+
   const initialValues = {
     email: "",
     password: "",
@@ -27,7 +31,7 @@ function RegistrationForm(props) {
     const { email, confirmPassword, phone } = values;
     console.log(values);
 
-    if (!confirmPassword === password) return;
+    if (confirmPassword !== password) return;
 
     password = await encrypt(password);
 
