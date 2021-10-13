@@ -1,6 +1,5 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import NavIcon from "./SubComponents/NavIcon";
 
 const NavBar = (props) => {
@@ -24,14 +23,15 @@ const NavBar = (props) => {
             <Nav.Link href="/shop">Shop</Nav.Link>
             <Nav.Link href="/sale">SALE</Nav.Link>
             <Nav.Link href="/shopping-cart">Cart</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="instagram.com">Instgram</Nav.Link>
             <NavDropdown title="Explore" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/gallery">Gallery</NavDropdown.Item>
               <NavDropdown.Item href="/blog">Blog</NavDropdown.Item>
               <NavDropdown.Item href="/contactus">Contact Us</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
+            <Nav.Link href="/logout">Logout</Nav.Link>
             <div className="vr ml-3 mr-4"></div>
             <NavIcon class="bi bi-search" />
             <NavIcon class="bi bi-cart" linkTo="/shopping-cart" />

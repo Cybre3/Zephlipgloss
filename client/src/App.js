@@ -1,7 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "bootstrap/dist/js/bootstrap.min.js";
-import React, { useState, useEffect, useRef } from "react";
+// import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { Redirect } from 'react-router';
 // import FOG from "vanta/dist/vanta.fog.min";
 
 import SaleBanner from './Components/SaleBanner';
@@ -16,6 +18,9 @@ import Footer from "./Components/Footer";
 import About from './Components/SubComponents/About';
 import RegistrationForm from './Components/RegistrationForm';
 import LoginForm from './Components/LoginForm';
+import Logout from './Components/Logout';
+import Admin from './Components/Admin';
+import Subscribe from './Components/SubComponents/Subscribe';
 
 const App = (props) => {
   // const [vantaEffect, setVantaEffect] = useState(0);
@@ -54,6 +59,7 @@ const App = (props) => {
           <Switch>
             <Route exact path="/">
               <Home />
+              <Subscribe />
             </Route>
             <Route path="/shop">
               <Shop />
@@ -61,8 +67,11 @@ const App = (props) => {
             <Route path="/register">
               <RegistrationForm />
             </Route>
-            <Route path="/login">
+            <Route exact path="/login">
               <LoginForm />
+            </Route>
+            <Route path="/logout">
+              <Logout />
             </Route>
             <Route path="/product/:id">
               <ProductPage />
@@ -78,6 +87,9 @@ const App = (props) => {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/admin">
+              <Admin />
             </Route>
           </Switch>
         </div>

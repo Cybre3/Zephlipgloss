@@ -11,10 +11,9 @@ function Select(props) {
       <Field as='select' id={name} name={name} {...rest} >
         {
           options.map(option => {
-            console.log(typeof option)
             return (
-              <option key={option} value={option}>
-                {option}
+              <option key={option.value} value={option.value}>
+                {option.key}
               </option>
             )
           })
