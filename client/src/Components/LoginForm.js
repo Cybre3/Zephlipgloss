@@ -7,7 +7,7 @@ import React, { useContext, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
-import { generateAuthToken } from "../utils/encrypt";
+// import { generateAuthToken } from "../utils/encrypt";
 import { Link, useHistory } from "react-router-dom";
 import authApi from "../utils/authApi";
 
@@ -26,13 +26,13 @@ function LoginForm(props) {
   });
 
   const onSubmit = async (values) => {
-    let token = await generateAuthToken(values);
+    // let token = await generateAuthToken(values);
 
-    if (token !== "") {
-      localStorage.setItem('cookie', token);
-      // setAuth(true);
-      window.location = "/"
-    }
+    // if (token !== "") {
+    //   localStorage.setItem('cookie', token);
+    //   // setAuth(true);
+    //   window.location = "/"
+    // }
   };
 
   return (

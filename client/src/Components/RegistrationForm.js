@@ -4,7 +4,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./Form/FormikControl";
 import axios from "axios";
-import { encrypt } from "../utils/encrypt";
+// import { encrypt } from "../utils/encrypt";
 import PinkButton from "./SubComponents/Button";
 import AuthApi from "../utils/authApi";
 
@@ -29,28 +29,28 @@ function RegistrationForm(props) {
   });
 
   const onSubmit = async (values) => {
-    let { password } = values;
-    const { email, confirmPassword, phone } = values;
-    console.log(values);
+    // let { password } = values;
+    // const { email, confirmPassword, phone } = values;
+    // console.log(values);
 
-    if (confirmPassword !== password) return;
+    // if (confirmPassword !== password) return;
 
-    password = await encrypt(password);
+    // password = await encrypt(password);
 
-    const aUser = {
-      email,
-      password,
-      phone,
-    };
+    // const aUser = {
+    //   email,
+    //   password,
+    //   phone,
+    // };
 
-    axios
-      .post("http://localhost:5000/register", aUser)
-      .then((res) => {
-        console.log("User added to database", res.data);
-        if (res.data.redirect === "/") {
-          window.location = "/"
-        }
-      });
+    // axios
+    //   .post("http://localhost:5000/register", aUser)
+    //   .then((res) => {
+    //     console.log("User added to database", res.data);
+    //     if (res.data.redirect === "/") {
+    //       window.location = "/"
+    //     }
+    //   });
   };
 
   return (
