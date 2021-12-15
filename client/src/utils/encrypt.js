@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
 const bcrypt = require("bcryptjs");
-require("dotenv").config({ path: "/client/.env" });
+require("dotenv").config({ path: "/client/src/.env" });
 
 const auth = {
   encrypt: async (password) => {
