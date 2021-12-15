@@ -2,10 +2,11 @@ import ProductList from "./SubComponents/ProductList";
 import FilterButton from "./SubComponents/FilterButton";
 import useFetch from "./useFetch";
 import { useState } from "react";
+require("dotenv").config();
 
 const Shop = () => {
   const [filter, setFilter] = useState("All");
-  const { data: products } = useFetch("http://localhost:5000/product/");
+  const { data: products } = useFetch(`${process.env.REACT_APP_API_URL}/product/`);
 
   const FILTER_MAP = {
     All: () => true,

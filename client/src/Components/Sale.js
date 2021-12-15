@@ -1,9 +1,9 @@
 import ProductList from "./SubComponents/ProductList";
 import useFetch from "./useFetch";
-
+require("dotenv").config();
 
 const Sale = () => {
-    const { data: products } = useFetch("http://localhost:5000/sale");
+    const { data: products } = useFetch(`${process.env.REACT_APP_API_URL}/sale`);
   
     return (
       <div>

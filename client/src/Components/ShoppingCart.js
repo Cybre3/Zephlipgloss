@@ -1,9 +1,10 @@
 import PinkButton from "./SubComponents/Button";
 import CartList from "./SubComponents/CartList";
 import useFetch from "./useFetch";
+require("dotenv").config();
 
 const ShoppingCart = (props) => {
-    const { data: products } = useFetch("http://localhost:5000/shopping-cart");
+    const { data: products } = useFetch(`${process.env.REACT_APP_API_URL}/shopping-cart`);
 
     return (
         <div className="shopping-cart">

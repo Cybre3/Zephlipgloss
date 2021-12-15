@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Redirect } from "react-router";
+require('dotenv').config();
 
 function Logout(props) {
   // let cart = useFetch('http://localhost:5000/shopping-cart');
@@ -8,7 +9,7 @@ function Logout(props) {
   const [status, setStatus] = useState(null);
 
   axios
-    .delete("http://localhost:5000/logout")
+    .delete(`${process.env.REACT_APP_API_URL}/logout`)
     .then((res) => {
       setStatus("Delete successful");
       if (res.status === 303) {

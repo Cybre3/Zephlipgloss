@@ -5,6 +5,7 @@ import FormikControl from "./Form/FormikControl";
 import PinkButton from "./SubComponents/Button";
 import axios from "axios";
 import { useHistory } from "react-router";
+require("dotenv").config();
 
 const ProductDetails = ({products}) => {
   const history = useHistory();
@@ -32,7 +33,7 @@ const ProductDetails = ({products}) => {
     }
 
     axios
-      .post("http://localhost:5000/shopping-cart", addToCartProduct)
+      .post(`${process.env.REACT_APP_API_URL}/shopping-cart`, addToCartProduct)
       .then((res) => console.log("Product added to cart", res.data));
 
       history.push('/shop')

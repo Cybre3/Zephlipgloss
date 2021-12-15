@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import ProductList from "./SubComponents/ProductList";
 import PinkButton from "./SubComponents/Button";
 import useFetch from "./useFetch";
+require("dotenv").config();
 
 const Home = () => {
-  const { data: products } = useFetch("http://localhost:5000/product");
+  const { data: products } = useFetch(`${process.env.REACT_APP_API_URL}/product`);
 
   const top3LipProducts = products.filter((product) => product.orders > 4);
   console.log(top3LipProducts)

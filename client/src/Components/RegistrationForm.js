@@ -7,6 +7,7 @@ import axios from "axios";
 import auth from "../utils/encrypt";
 import PinkButton from "./SubComponents/Button";
 import AuthApi from "../utils/authApi";
+require("dotenv").config();
 
 function RegistrationForm(props) {
   const authApi = useContext(AuthApi);
@@ -44,7 +45,7 @@ function RegistrationForm(props) {
     };
 
     axios
-      .post("http://localhost:5000/register", aUser)
+      .post(`${process.env.REACT_APP_API_URL}/register`, aUser)
       .then((res) => {
         console.log("User added to database", res.data);
         if (res.data.redirect === "/") {
