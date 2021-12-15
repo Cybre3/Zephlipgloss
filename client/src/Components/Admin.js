@@ -1,5 +1,5 @@
 import React from "react";
-import AddItem from "./Admin/AddItem";
+
 import Jumbotron from "./SubComponents/Jumbotron";
 
 function Admin(props) {

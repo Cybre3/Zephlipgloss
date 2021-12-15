@@ -2,7 +2,7 @@ const { default: axios } = require("axios");
 const bcrypt = require("bcryptjs");
 require("dotenv").config({ path: "/client/.env" });
 
-module.exports = {
+const auth = {
   encrypt: async (password) => {
     const salt = await bcrypt.genSalt();
     password = await bcrypt.hash(password, salt);
@@ -45,3 +45,5 @@ module.exports = {
 };
 
 
+
+export default auth;
