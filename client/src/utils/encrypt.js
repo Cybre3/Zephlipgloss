@@ -15,7 +15,7 @@ const auth = {
 
     // Get user from DB
     const userDbMatch = await axios
-      .get(`http://localhost:5000/user/${email}`)
+      .get(`${process.env.REACT_APP_API_URL}/user/${email}`)
       .then((res) => res.data)
       .catch((err) => console.log("No data available", err));
 
@@ -33,7 +33,7 @@ const auth = {
 
     let token = "";
     await axios
-      .post("http://localhost:5000/login", values)
+      .post(`${process.env.REACT_APP_API_URL}/login`, values)
       .then((res) => {
         console.log("This is res.data", res.data);
          token = res.data.token;
